@@ -404,6 +404,9 @@ func mergeConfig(config *libconfig.Config, ctx *cli.Context) error {
 	if ctx.IsSet("hostnetwork-disable-selinux") {
 		config.HostNetworkDisableSELinux = ctx.Bool("hostnetwork-disable-selinux")
 	}
+	if ctx.IsSet("disable-hostport-mapping") {
+		config.DisableHostPortMapping = ctx.Bool("disable-hostport-mapping")
+	}
 	return nil
 }
 
@@ -1122,6 +1125,12 @@ func getCrioFlags(defConf *libconfig.Config) []cli.Flag {
 			Usage:   "Determines whether SELinux should be disabled within a pod when it is running in the host network namespace.",
 			EnvVars: []string{"CONTAINER_HOSTNETWORK_DISABLE_SELINUX"},
 			Value:   defConf.HostNetworkDisableSELinux,
+		},
+		&cli.BoolFlag{
+			Name:    "disable-hostport-mapping",
+			Usage:   "If true, CRI-O would disable the hostport mapping.",
+			EnvVars: []string{"DISABLE_HOSTPORT_MAPPING"},
+			Value:   defConf.DisableHostPortMapping,
 		},
 	}
 }
