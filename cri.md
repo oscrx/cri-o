@@ -126,8 +126,8 @@ the use-case above.
 
 If we pull a container image by its digest like this:
 
-```
-> sudo crictl pull docker.io/alpine@sha256:2a8831c57b2e2cb2cda0f3a7c260d3b6c51ad04daea0b3bfc5b55f489ebafd71
+```shell
+sudo crictl pull docker.io/alpine@sha256:2a8831c57b2e2cb2cda0f3a7c260d3b6c51ad04daea0b3bfc5b55f489ebafd71
 ```
 
 Then CRI-O will not be able to provide a `RepoTags` result, but a single entry

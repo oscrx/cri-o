@@ -18,7 +18,7 @@ where the CRI-O community aims to have a x.y.0 release released within three day
 For PRs and Issues that are targeted at a particular x.y.0 release can be added to the x.y Milestone and they will be considered for priority in leading up to the actual release.
 However, since CRI-O’s releases are time bound and partially out of the CRI-O communities’ control, tagging a PR or issue with a Milestone does not guarantee it will be included.
 Users or contributors who don’t have permissions to add the Milestone can request an Approver do so.
-If there is disagreement, the standard [Conflict resolution and voting](https://github.com/cri-o/cri-o/tree/main/CONTRIBUTORS.md) mechanism will be used.
+If there is disagreement, the standard [Conflict resolution and voting](https://github.com/cri-o/cri-o/blob/main/GOVERNANCE.md#conflict-resolution-and-voting) mechanism will be used.
 Pull requests targeting patch release-x.y branches are not part of any milestone.
 The release branches are decoupled from the [Kubernetes patch release cycle](https://k8s.io/releases/patch-releases) and fixes can be merged ad-hoc.
 The support for patch release branches follows the yearly Kubernetes period and can be longer based on contributor bandwidth.
@@ -57,7 +57,6 @@ Some of these features can be seen below:
 ## Known Risks
 
 - Relying on different SIGs for CRI-O features:
-
   - We have a need to discuss our enhancements with different SIGs to get all required information and drive the change. This can lead into helpful, but maybe not expected input and delay the deliverable.
 
 - Some features require initial research:

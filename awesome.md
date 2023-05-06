@@ -6,13 +6,19 @@ collects useful resources about CRI-O.
 
 ## Contents
 
-- [Resources](#resources)
-  - [Articles](#articles)
-  - [Community](#community)
-  - [Videos](#videos)
-  - [Podcasts](#podcasts)
-  - [Tutorials](#tutorials)
-  - [Websites](#websites)
+<!-- TOC start -->
+
+- [Awesome CRI-O ](#awesome-cri-o-)
+  - [Contents](#contents)
+  - [Resources](#resources)
+    - [Articles](#articles)
+    - [Community](#community)
+    - [Podcasts](#podcasts)
+    - [Videos](#videos)
+    - [Tutorials](#tutorials)
+    - [Websites](#websites)
+
+<!-- TOC end -->
 
 ## Resources
 

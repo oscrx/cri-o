@@ -32,15 +32,19 @@ Policy](https://kubernetes.io/releases/version-skew-policy/).
 | Version - Branch            | Kubernetes branch/version       | Maintenance status |
 | --------------------------- | ------------------------------- | ------------------ |
 | CRI-O HEAD - main           | Kubernetes master branch        | ✓                  |
+| CRI-O 1.27.x - release-1.27 | Kubernetes 1.27 branch, v1.27.x | =                  |
+| CRI-O 1.26.x - release-1.26 | Kubernetes 1.26 branch, v1.26.x | =                  |
+| CRI-O 1.25.x - release-1.25 | Kubernetes 1.25 branch, v1.25.x | =                  |
 | CRI-O 1.24.x - release-1.24 | Kubernetes 1.24 branch, v1.24.x | =                  |
-| CRI-O 1.23.x - release-1.23 | Kubernetes 1.23 branch, v1.23.x | =                  |
-| CRI-O 1.22.x - release-1.22 | Kubernetes 1.22 branch, v1.22.x | =                  |
-| CRI-O 1.21.x - release-1.21 | Kubernetes 1.21 branch, v1.21.x | =                  |
+| CRI-O 1.23.x - release-1.23 | Kubernetes 1.23 branch, v1.23.x | ✗                  |
+| CRI-O 1.22.x - release-1.22 | Kubernetes 1.22 branch, v1.22.x | ✗                  |
+| CRI-O 1.21.x - release-1.21 | Kubernetes 1.21 branch, v1.21.x | ✗                  |
 
 Key:
 
 - `✓` Changes in the main Kubernetes repo about CRI are actively implemented in CRI-O
 - `=` Maintenance is manual, only bugs will be patched.
+- `✗` Following Kubernetes support, these releases are end of life.
 
 The release notes for CRI-O are hand-crafted and can be continuously retrieved
 from [our GitHub pages website](https://cri-o.github.io/cri-o).
@@ -160,7 +164,7 @@ It is also possible to select a specific git SHA or tag by:
 The above script resolves to the download URL of the static binary bundle
 tarball matching the format:
 
-```
+```text
 https://storage.googleapis.com/cri-o/artifacts/cri-o.$ARCH.$REV.tar.gz
 ```
 
@@ -172,7 +176,7 @@ We also provide a Software Bill of Materials (SBOM) in the [SPDX
 format](https://spdx.org) for each bundle. The SBOM is available at the same URL
 like the bundle itself, but suffixed with `.spdx`:
 
-```
+```text
 https://storage.googleapis.com/cri-o/artifacts/cri-o.$ARCH.$REV.tar.gz.spdx
 ```
 
