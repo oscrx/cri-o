@@ -1,11 +1,11 @@
 # Awesome CRI-O [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-This list follows the [awesome
-manifesto](https://github.com/sindresorhus/awesome/blob/master/awesome.md), and
-collects useful resources about CRI-O.
+This list follows the [awesome manifesto](https://github.com/sindresorhus/awesome/blob/master/awesome.md)
+, and collects useful resources about CRI-O.
 
 ## Contents
 
+<!-- markdownlint-disable-file MD039 MD051 -->
 <!-- TOC start -->
 
 - [Awesome CRI-O ](#awesome-cri-o-)

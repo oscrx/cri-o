@@ -2,7 +2,7 @@
 
 The target of this document is to outline corner cases and common pitfalls in
 conjunction with the Container Runtime Interface (CRI). This document outlines
-CRI-O's interpretation of certain aspects of the interface, which may not be 
+CRI-O's interpretation of certain aspects of the interface, which may not be
 completely formalized.
 
 The main documentation of the CRI can be found [in the corresponding protobuf
@@ -26,8 +26,8 @@ Both tags and digests will be used by:
 
 - The kubelet, which displays them in the node status as a flat list, for example:
 
-  ```
-  > kubectl get node 127.0.0.1 -o json | jq .status.images
+  ```shell
+  kubectl get node 127.0.0.1 -o json | jq .status.images
   ```
 
   ```json
@@ -48,8 +48,9 @@ Both tags and digests will be used by:
   score nodes based on the information if a container image already exists.
 
 - crictl, which is able to output the image list in a human readable way:
-  ```
-  > sudo crictl images --digests
+
+  ```shell
+  sudo crictl images --digests
   IMAGE                 TAG       DIGEST           IMAGE ID         SIZE
   registry.k8s.io/pause      3.2       4a1c4b21597c1    80d28bedfe5de    688kB
   ```
@@ -87,8 +88,8 @@ repoDigests = []string{from.PreviousName + "@" + string(from.Digest)}
 This allows tools like `crictl` to output the image name by adding a `<none>`
 placeholder for the tag:
 
-```
-> sudo crictl images --digests
+```shell
+$ sudo crictl images --digests
 IMAGE                               TAG       DIGEST           IMAGE ID         SIZE
 quay.io/saschagrunert/hello-world   <none>    2403474085c1e    14c28051b743c    5.88MB
 quay.io/saschagrunert/hello-world   latest    ca810c5740f66    d1165f2212346    17.7kB
@@ -97,8 +98,8 @@ quay.io/saschagrunert/hello-world   latest    ca810c5740f66    d1165f2212346    
 The `kubelet` is still able to list the image by its digest, which could be
 referenced by a Kubernetes container:
 
-```
-> kubectl get node 127.0.0.1 -o json | jq .status.images
+```shell
+kubectl get node 127.0.0.1 -o json | jq .status.images
 ```
 
 ```json
@@ -114,8 +115,8 @@ referenced by a Kubernetes container:
 
 We assume that we consecutively build a container image locally like this:
 
-```
-> sudo podman build --no-cache -t test .
+```shell
+sudo podman build --no-cache -t test .
 ```
 
 The previous image tag gets removed by Podman and applied to the current build.

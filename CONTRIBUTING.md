@@ -77,7 +77,9 @@ commit message so that github will automatically close the referenced issue
 when the PR is merged.
 
 Most PRs will be reviewed by two [approvers][prow-approvers] (listed [here](OWNERS)).
-Some maintainers add themselves to [`CODEOWNERS`](.github/CODEOWNERS) to manage their [review notifications][code-owners], but those entries have no governance significance.
+Some maintainers add themselves to [`CODEOWNERS`](.github/CODEOWNERS)
+to manage their [review notifications][code-owners],
+but those entries have no governance significance.
 
 ### Dependency management
 
@@ -144,7 +146,9 @@ By making a contribution to this project, I certify that:
 
 Then you just add a line to every git commit message:
 
+```text
     Signed-off-by: Joe Smith <joe.smith@email.com>
+```
 
 Use your real name (sorry, no pseudonyms or anonymous contributions.)
 
@@ -153,7 +157,8 @@ commit automatically with `git commit -s`.
 
 ## Communications
 
-For general questions, or discussions, please use our [channel on the Kubernetes slack](https://kubernetes.slack.com/archives/crio).
+For general questions, or discussions,
+please use our [channel on the Kubernetes slack](https://kubernetes.slack.com/archives/crio).
 
 For discussions around issues/bugs and features, you can use the github
 [issues](https://github.com/cri-o/cri-o/issues)

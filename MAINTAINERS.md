@@ -1,6 +1,7 @@
 # CRI-O Maintainers
 
-[GOVERNANCE.md](https://github.com/cri-o/cri-o/blob/main/GOVERNANCE.md) describes the CRI-O governance.
+[GOVERNANCE.md](https://github.com/cri-o/cri-o/blob/main/GOVERNANCE.md)
+describes the CRI-O governance.
 
 ## Maintainers
 

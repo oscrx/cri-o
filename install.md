@@ -1,8 +1,11 @@
+<!-- markdownlint-disable-next-line MD041 -->
 ![CRI-O logo](https://github.com/cri-o/cri-o/blob/main/logo/crio-logo.svg?raw=true)
 
 # CRI-O Installation Instructions
 
-This guide will walk you through the installation of [CRI-O](https://github.com/cri-o/cri-o), an Open Container Initiative-based implementation of the [Kubernetes Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node/container-runtime-interface-v1.md).
+This guide will walk you through the installation of [CRI-O](https://github.com/cri-o/cri-o),
+an Open Container Initiative-based implementation of the
+[Kubernetes Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node/container-runtime-interface-v1.md).
 It is assumed you are running a Linux machine.
 
 ## Table of Contents
@@ -55,7 +58,8 @@ CRI-O builds for native package managers using [openSUSE's OBS](https://build.op
 
 ### Supported versions
 
-CRI-O follows the [Kubernetes support cycle](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions) of three minor releases.
+CRI-O follows the [Kubernetes support cycle](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
+of three minor releases.
 CRI-O also attempts to package for the following operating systems:
 
 ```text
@@ -75,11 +79,11 @@ xUbuntu 20.04
 xUbuntu 18.04
 ```
 
-To install, choose a supported version for your operating system, and export it as a variable, like so:
-`export VERSION=1.19`
+To install, choose a supported version for your operating system, and export it
+as a variable, like so: `export VERSION=1.19`
 
-We also save releases as subprojects. If you'd, for instance, like to use `1.19.1` you can set
-`export VERSION=1.19:1.19.1`
+We also save releases as subprojects. If you'd, for instance, like to use `1.19.1`
+you can set `export VERSION=1.19:1.19.1`
 
 Packaging for CRI-O is done best-effort, and is largely driven by requests.
 If there's a version or operating system that is missing, please [open an issue](https://github.com/cri-o/cri-o/issues/new).
@@ -99,10 +103,13 @@ sudo dnf module enable cri-o:$VERSION
 sudo dnf install cri-o
 ```
 
-For Fedora, we only support setting minor versions. i.e: `VERSION=1.18`, and do not support pinning patch versions: `VERSION=1.18.3`
+For Fedora, we only support setting minor versions. i.e: `VERSION=1.18`, and do
+not support pinning patch versions: `VERSION=1.18.3`
 
-Note: as of 1.24.0, the `cri-o` package no longer depends on `containernetworking-plugins` package.
-Removing this dependency allows users to install their own CNI plugins without having to remove files first.
+Note: as of 1.24.0, the `cri-o` package no longer depends on
+`containernetworking-plugins` package.
+Removing this dependency allows users to install their own CNI plugins without
+having to remove files first.
 If users want to use the previously provided CNI plugins, they should also run:
 
 ```shell
@@ -111,7 +118,8 @@ sudo dnf install containernetworking-plugins
 
 #### Other yum based operating systems
 
-To install on the following operating systems, set the environment variable $OS as the appropriate field in the following table:
+To install on the following operating systems, set the environment variable $OS
+as the appropriate field in the following table:
 
 | Operating system | $OS               |
 | ---------------- | ----------------- |
@@ -121,14 +129,18 @@ To install on the following operating systems, set the environment variable $OS 
 
 And then run the following as root:
 
+<!-- markdownlint-disable MD013 -->
 ```shell
 curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/devel:kubic:libcontainers:stable.repo
 curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$VERSION/$OS/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo
 yum install cri-o
 ```
+<!-- markdownlint-enable MD013 -->
 
-Note: as of 1.24.0, the `cri-o` package no longer depends on `containernetworking-plugins` package.
-Removing this dependency allows users to install their own CNI plugins without having to remove files first.
+Note: as of 1.24.0, the `cri-o` package no longer depends on
+`containernetworking-plugins` package.
+Removing this dependency allows users to install their own CNI plugins without
+having to remove files first.
 If users want to use the previously provided CNI plugins, they should also run:
 
 ```shell
@@ -139,7 +151,8 @@ yum install containernetworking-plugins
 
 Note: this tutorial assumes you have curl and gnupg installed
 
-To install on the following operating systems, set the environment variable $OS as the appropriate field in the following table:
+To install on the following operating systems, set the environment variable $OS
+as the appropriate field in the following table:
 
 | Operating system | $OS               |
 | ---------------- | ----------------- |
@@ -155,8 +168,11 @@ To install on the following operating systems, set the environment variable $OS 
 | Ubuntu 20.04     | `xUbuntu_20.04`   |
 | Ubuntu 18.04     | `xUbuntu_18.04`   |
 
-If installing cri-o-runc (recommended), you'll need to install libseccomp >= 2.4.1. **NOTE: This is not available in distros based on Debian 10(buster) or below, so buster backports will need to be enabled:**
+If installing cri-o-runc (recommended), you'll need to install libseccomp >= 2.4.1.
+**NOTE: This is not available in distros based on Debian 10(buster) or below,
+so buster backports will need to be enabled:**
 
+<!-- markdownlint-disable MD013 -->
 ```shell
 echo 'deb http://deb.debian.org/debian buster-backports main' > /etc/apt/sources.list.d/backports.list
 apt update
@@ -176,9 +192,12 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 apt-get update
 apt-get install cri-o cri-o-runc
 ```
+<!-- markdownlint-enable MD013 -->
 
-**Note: We include cri-o-runc because Ubuntu and Debian include their own packaged version of runc.**
-While this version should work with CRI-O, keeping the packaged versions of CRI-O and runc in sync ensures they work together.
+**Note: We include cri-o-runc because Ubuntu and Debian include their own packaged
+version of runc.**
+While this version should work with CRI-O, keeping the packaged versions of CRI-O
+and runc in sync ensures they work together.
 If you'd like to use the distribution's runc, you'll have to add the file:
 
 ```toml
@@ -190,8 +209,10 @@ runtime_root = "/run/runc"
 
 to `/etc/crio/crio.conf.d/`
 
-Note: as of 1.24.0, the `cri-o` package no longer depends on `containernetworking-plugins` package.
-Removing this dependency allows users to install their own CNI plugins without having to remove files first.
+Note: as of 1.24.0, the `cri-o` package no longer depends on
+`containernetworking-plugins` package.
+Removing this dependency allows users to install their own CNI plugins without
+having to remove files first.
 If users want to use the previously provided CNI plugins, they should also run:
 
 ```shell
@@ -206,7 +227,8 @@ apt-get install containernetworking-plugins
 - iproute
 - iptables
 
-Latest version of `runc` is expected to be installed on the system. It is picked up as the default runtime by CRI-O.
+Latest version of `runc` is expected to be installed on the system. It is picked
+up as the default runtime by CRI-O.
 
 ### Build and Run Dependencies
 
@@ -240,7 +262,9 @@ yum install -y \
 - `CentOS 8` (or higher): `pkgconfig` package is replaced by `pkgconf-pkg-config`
 - By default btrfs is not enabled. To add the btrfs support, install the
   following package: `btrfs-progs-devel`
-- It is possible the distribution packaged version of runc is out of date. If you'd like to get the latest and greatest runc, consider using the one found in [devel:kubic:libcontainers:stable](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+- It is possible the distribution packaged version of runc is out of date.
+- If you'd like to get the latest and greatest runc, consider using the one
+- found in [devel:kubic:libcontainers:stable](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
 
 #### RHEL 8
 
@@ -258,7 +282,8 @@ subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms
 subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms
 ```
 
-Follow [this guide to subscribe to the repositories](https://access.redhat.com/solutions/265523) if not already subscribed
+Follow [this guide to subscribe to the repositories](https://access.redhat.com/solutions/265523)
+if not already subscribed.
 
 This requires Go version 1.18 or greater. Follow [these instructions to install Go](https://go.dev/doc/install)
 
@@ -358,7 +383,9 @@ apt-get update -qq && apt-get install -y \
 
 **Caveats and Notes:**
 
-If using an older release or a long-term support release, be careful to double-check that the version of `runc` is new enough (running `runc --version` should produce `spec: 1.0.0`), or else build your own.
+If using an older release or a long-term support release, be careful to
+double-check that the version of `runc` is new enough (running `runc --version`
+should produce `spec: 1.0.0`), or else build your own.
 
 Be careful to double-check that the version of golang is new enough, version
 1.12.x or higher is required. If needed, newer golang versions are available at
@@ -386,7 +413,8 @@ make
 sudo make install
 ```
 
-Otherwise, if you do not want to build `CRI-O` with seccomp support you can add `BUILDTAGS=""` when running make.
+Otherwise, if you do not want to build `CRI-O` with seccomp support you can add
+`BUILDTAGS=""` when running make.
 
 ```shell
 make BUILDTAGS=""
@@ -395,7 +423,8 @@ sudo make install
 
 #### Install with Ansible
 
-An [Ansible Role](https://github.com/alvistack/ansible-role-cri_o) is also available to automate the above steps:
+An [Ansible Role](https://github.com/alvistack/ansible-role-cri_o) is also
+available to automate the above steps:
 
 ``` bash
 sudo su -
@@ -421,25 +450,28 @@ make BUILDTAGS='seccomp apparmor'
 | --------- | ---------------------------------- | ---------- |
 | seccomp   | syscall filtering                  | libseccomp |
 | selinux   | selinux process and mount labeling | libselinux |
-| apparmor  | apparmor profile support           | <none>     |
+| apparmor  | apparmor profile support           |            |
 
-`CRI-O` manages images with [containers/image](https://github.com/containers/image), which uses the following buildtags.
+`CRI-O` manages images with [containers/image](https://github.com/containers/image),
+which uses the following buildtags.
 
+<!-- markdownlint-disable MD013 -->
 | Build Tag                    | Feature                                     | Dependency |
 | ---------------------------- | ------------------------------------------- | ---------- |
-| containers_image_openpgp     | use native golang pgp instead of cgo        | <none>     |
-| containers_image_ostree_stub | disable use of ostree as an image transport | <none>     |
+| containers_image_openpgp     | use native golang pgp instead of cgo        |            |
+| containers_image_ostree_stub | disable use of ostree as an image transport |            |
 
 `CRI-O` also uses [containers/storage](https://github.com/containers/storage) for managing container storage.
 
 | Build Tag                        | Feature                                         | Dependency   |
 | -------------------------------- | ----------------------------------------------- | ------------ |
-| exclude_graphdriver_btrfs        | exclude btrfs as a storage option               | <none>       |
+| exclude_graphdriver_btrfs        | exclude btrfs as a storage option               |              |
 | btrfs_noversion                  | for building btrfs version < 3.16.1             | btrfs        |
-| exclude_graphdriver_devicemapper | exclude devicemapper as a storage option        | <none>       |
+| exclude_graphdriver_devicemapper | exclude devicemapper as a storage option        |              |
 | libdm_no_deferred_remove         | don't compile deferred remove with devicemapper | devicemapper |
-| exclude_graphdriver_overlay      | exclude overlay as a storage option             | <none>       |
+| exclude_graphdriver_overlay      | exclude overlay as a storage option             |              |
 | ostree                           | build storage using ostree                      | ostree       |
+<!-- markdownlint-enable MD013 -->
 
 ### Static builds
 
@@ -495,7 +527,8 @@ Created ./bundle/cri-o.amd64.v1.20.0.tar.gz
 
 ### Download conmon
 
-[conmon](https://github.com/containers/conmon) is a per-container daemon that `CRI-O` uses to monitor container logs and exit information.
+[conmon](https://github.com/containers/conmon) is a per-container daemon that
+`CRI-O` uses to monitor container logs and exit information.
 `conmon` needs to be downloaded with `CRI-O`.
 
 running:
@@ -518,7 +551,8 @@ your system.
 
 ### CRI-O configuration
 
-If you are installing for the first time, generate and install configuration files with:
+If you are installing for the first time, generate and install
+configuration files with:
 
 ```shell
 sudo make install.config
@@ -526,8 +560,10 @@ sudo make install.config
 
 ### Validate registries in registries.conf
 
-Edit `/etc/containers/registries.conf` and verify that the registries option has valid values in it.  For example:
+Edit `/etc/containers/registries.conf` and verify that the registries option has
+valid values in it.  For example:
 
+<!-- markdownlint-disable MD013 -->
 ```conf
 [registries.search]
 registries = ['registry.access.redhat.com', 'registry.fedoraproject.org', 'quay.io', 'docker.io']
@@ -538,6 +574,7 @@ registries = []
 [registries.block]
 registries = []
 ```
+<!-- markdownlint-enable MD013 -->
 
 For more information about this file see [registries.conf(5)](https://github.com/containers/image/blob/master/docs/containers-registries.conf.5.md).
 
@@ -604,12 +641,14 @@ sudo systemctl start crio
 
 ### Using CRI-O
 
-- Follow this [tutorial](tutorials/crictl.md) to quickly get started running simple pods and containers.
+- Follow this [tutorial](tutorials/crictl.md) to quickly get started running
+  simple pods and containers.
 - To run a full cluster, see [the instructions](tutorials/kubernetes.md).
 - To run with kubeadm, see [kubeadm instructions](tutorials/kubeadm.md).
 
 ### Updating CRI-O
 
+<!-- markdownlint-disable MD024 -->
 ### openSUSE
 
 ```shell
@@ -639,9 +678,12 @@ If updating to a patch version (for example, ``VERSION=1.8.3``
 ```shell
 apt update cri-o cri-o-runc
 ```
+<!-- markdownlint-enable MD024 -->
 
-Otherwise, be sure that the environment variable ```$OS``` is set to your operating system as the appropriate field in the following table
-To install on the following operating systems, set the environment variable $OS as the appropriate field in the following table:
+Otherwise, be sure that the environment variable ```$OS``` is set to your operating
+system as the appropriate field in the following table.
+To install on the following operating systems, set the environment variable $OS
+as the appropriate field in the following table:
 
 | Operating system | $OS               |
 | ---------------- | ----------------- |
@@ -656,9 +698,11 @@ To install on the following operating systems, set the environment variable $OS 
 | Ubuntu 20.04     | `xUbuntu_20.04`   |
 | Ubuntu 18.04     | `xUbuntu_18.04`   |
 
-To upgrade, choose a supported version for your operating system, and export it as a variable, like so:
+To upgrade, choose a supported version for your operating system,
+and export it as a variable, like so:
 `export VERSION=1.18`, and run the following as root
 
+<!-- markdownlint-disable MD013 -->
 ```shell
 rm /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
 
@@ -669,3 +713,4 @@ curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:sta
 apt update
 apt install cri-o cri-o-runc
 ```
+<!-- markdownlint-enable MD013 -->

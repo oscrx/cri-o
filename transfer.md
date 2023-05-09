@@ -1,15 +1,22 @@
 # CRI-O Usage Transfer
 
-This document outlines useful information for operations and development transfer as it relates to infrastructure that utilizes CRI-O.
+This document outlines useful information for operations and development transfer
+as it relates to infrastructure that utilizes CRI-O.
 
 ## Operational Transfer
 
 ## Abstract
 
-The `crio` daemon is intended to provide the CRI socket needed for Kubernetes to use for automating deployment, scaling, and management of containerized applications (See the document for [configuring kubernetes to use CRI-O](./tutorials/kubernetes.md) for more information).
-Therefore the [crictl][1] command line is a client that interfaces to the same gRPC socket as the kubernetes daemon would, for talking to the `crio` daemon.
+The `crio` daemon is intended to provide the CRI socket needed for Kubernetes to
+use for automating deployment, scaling, and management of containerized applications
+(See the document for [configuring kubernetes to use CRI-O](./tutorials/kubernetes.md)
+for more information).
+Therefore the [crictl][1] command line is a client that interfaces to the
+same gRPC socket as the kubernetes daemon would, for talking to the `crio` daemon.
 In many ways [crictl][1] is only as feature rich as the Kubernetes CRI requires.
-There are additional tools e.g. [Podman](https://github.com/containers/podman) and [Buildah](https://github.com/projectatomic/buildah) that provide a feature rich set of commands for all operational needs in a Kubernetes environment.
+There are additional tools e.g. [Podman](https://github.com/containers/podman) and
+[Buildah](https://github.com/projectatomic/buildah) that provide a feature rich
+set of commands for all operational needs in a Kubernetes environment.
 
 Please note that the full interoperability between CRI-O and Podman cannot be
 guaranteed at this time. For example, it is not possible to interact with CRI-O
@@ -21,13 +28,17 @@ with the CRI, like [crictl][1].
 ## System Tools
 
 Many traditional tools will still be useful, such as `pstree`, `nsenter` and `lsns`.
-As well as some systemd helpers like `systemd-cgls` and `systemd-cgtop` are still just as applicable.
+As well as some systemd helpers like `systemd-cgls` and `systemd-cgtop` are still
+just as applicable.
 
 ## Equivalents
 
-For many troubleshooting and information collection steps, there may be an existing pattern.
-Following provides equivalent with CRI-O tools for gathering information or jumping into containers, for operational use.
+For many troubleshooting and information collection steps,
+there may be an existing pattern.
+Following provides equivalent with CRI-O tools for gathering information or
+jumping into containers, for operational use.
 
+<!-- markdownlint-disable MD013 -->
 | Existing Step | CRI-O (and friends) |
 | :---: | :---: |
 | `docker exec` | [`crictl exec`](https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md) |
@@ -36,13 +47,16 @@ Following provides equivalent with CRI-O tools for gathering information or jump
 | `docker logs` | [`podman logs`](./docs/podman-logs.1.md)                 |
 | `docker ps` | [`crictl ps`](https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md) or [`runc list`](https://github.com/opencontainers/runc/blob/master/man/runc-list.8.md) |
 | `docker stats` | [`podman stats`](./docs/podman-stats.1.md) |
+<!-- markdownlint-enable MD013 -->
 
-If you were already using steps like `kubectl exec` (or `oc exec` on OpenShift), they will continue to function the same way.
+If you were already using steps like `kubectl exec` (or `oc exec` on OpenShift),
+they will continue to function the same way.
 
 ## Development Transfer
 
 There are other equivalents for these tools
 
+<!-- markdownlint-disable MD013 -->
 | Existing Step | CRI-O (and friends) |
 | :---: | :---: |
 | `docker attach` | [`podman exec`](https://podman.readthedocs.io/en/latest/markdown/podman-exec.1.html) ***|
@@ -71,6 +85,10 @@ There are other equivalents for these tools
 | `docker unpause`| [`podman unpause`](https://podman.readthedocs.io/en/latest/markdown/podman-unpause.1.html)|
 | `docker version`| [`podman version`](https://podman.readthedocs.io/en/latest/markdown/podman-version.1.html)|
 | `docker wait`   | [`podman wait`](https://podman.readthedocs.io/en/latest/markdown/podman-wait.1.html)   |
+<!-- markdownlint-enable MD013 -->
 
-*** Use `podman exec` to enter a container and `podman logs` to view the output of pid 1 of a container.
-**** Use mount to take advantage of the entire linux tool chain rather then just cp.  Read [`here`](https://podman.readthedocs.io/en/latest/markdown/podman-cp.1.html) for more information.
+Use `podman exec` to enter a container and `podman logs`to view the output
+of pid 1 of a container.
+Use mount to take advantage of the entire linux tool chain rather then just cp.
+Read [`here`](https://podman.readthedocs.io/en/latest/markdown/podman-cp.1.html)
+for more information.
